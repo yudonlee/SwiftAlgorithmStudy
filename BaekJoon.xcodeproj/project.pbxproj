@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF4E28FC2829279B00F51133 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E28FB2829279B00F51133 /* main.swift */; };
+		BF4E290128294F3400F51133 /* 1026.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4E290028294F3400F51133 /* 1026.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +25,9 @@
 /* Begin PBXFileReference section */
 		BF4E28F12828FEC600F51133 /* BaekJoon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BaekJoon; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4E28F42828FEC600F51133 /* 2309.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2309.swift; sourceTree = "<group>"; };
-		BF4E28FB2829279B00F51133 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		BF4E28FB2829279B00F51133 /* 18111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 18111.swift; sourceTree = "<group>"; };
+		BF4E28FD2829407C00F51133 /* 1931.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1931.swift; sourceTree = "<group>"; };
+		BF4E290028294F3400F51133 /* 1026.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1026.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				BF4E28F42828FEC600F51133 /* 2309.swift */,
-				BF4E28FB2829279B00F51133 /* main.swift */,
+				BF4E28FB2829279B00F51133 /* 18111.swift */,
+				BF4E28FD2829407C00F51133 /* 1931.swift */,
+				BF4E290028294F3400F51133 /* 1026.swift */,
 			);
 			path = BaekJoon;
 			sourceTree = "<group>";
@@ -96,6 +100,7 @@
 				TargetAttributes = {
 					BF4E28F02828FEC600F51133 = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -122,7 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4E28FC2829279B00F51133 /* main.swift in Sources */,
+				BF4E290128294F3400F51133 /* 1026.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,10 +250,17 @@
 		BF4E28F92828FEC600F51133 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9CAJN27UH;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -256,9 +268,15 @@
 		BF4E28FA2828FEC600F51133 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9CAJN27UH;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
