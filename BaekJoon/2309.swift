@@ -38,3 +38,5 @@ for i in numbers {
     print(i)
     
 }
+
+print(numbers.firstIndex)
