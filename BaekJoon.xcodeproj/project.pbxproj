@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BF4C960D2830B701009B1149 /* 10773.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C960C2830B701009B1149 /* 10773.swift */; };
+		BF4C960F2830BF37009B1149 /* 10828.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C960A2830AED1009B1149 /* 10828.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF4C960E2830BF14009B1149 /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				BF4C960C2830B701009B1149 /* 10773.swift */,
+				BF4C960A2830AED1009B1149 /* 10828.swift */,
+			);
+			path = Additional;
+			sourceTree = "<group>";
+		};
+		BF4C96102830BF4C009B1149 /* week1 */ = {
+			isa = PBXGroup;
+			children = (
+				BF4E28F42828FEC600F51133 /* 2309.swift */,
+				BF4E28FB2829279B00F51133 /* 18111.swift */,
+				BF4E28FD2829407C00F51133 /* 1931.swift */,
+				BF4E290028294F3400F51133 /* 1026.swift */,
+			);
+			path = week1;
+			sourceTree = "<group>";
+		};
+		BF4C96112830BF6A009B1149 /* week2 */ = {
+			isa = PBXGroup;
+			children = (
+				BF1D00F1282A9E4300F1CF2A /* 1920.swift */,
+				BF4C9605282CF9E4009B1149 /* 10816.swift */,
+				BF4C9607282F85A7009B1149 /* 3020.swift */,
+			);
+			path = week2;
+			sourceTree = "<group>";
+		};
 		BF4E28E82828FEC600F51133 = {
 			isa = PBXGroup;
 			children = (
@@ -65,15 +96,9 @@
 		BF4E28F32828FEC600F51133 /* BaekJoon */ = {
 			isa = PBXGroup;
 			children = (
-				BF4E28F42828FEC600F51133 /* 2309.swift */,
-				BF4E28FB2829279B00F51133 /* 18111.swift */,
-				BF4E28FD2829407C00F51133 /* 1931.swift */,
-				BF4E290028294F3400F51133 /* 1026.swift */,
-				BF1D00F1282A9E4300F1CF2A /* 1920.swift */,
-				BF4C9605282CF9E4009B1149 /* 10816.swift */,
-				BF4C9607282F85A7009B1149 /* 3020.swift */,
-				BF4C960A2830AED1009B1149 /* 10828.swift */,
-				BF4C960C2830B701009B1149 /* 10773.swift */,
+				BF4C96102830BF4C009B1149 /* week1 */,
+				BF4C96112830BF6A009B1149 /* week2 */,
+				BF4C960E2830BF14009B1149 /* Additional */,
 			);
 			path = BaekJoon;
 			sourceTree = "<group>";
@@ -138,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4C960D2830B701009B1149 /* 10773.swift in Sources */,
+				BF4C960F2830BF37009B1149 /* 10828.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
