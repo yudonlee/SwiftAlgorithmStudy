@@ -13,7 +13,7 @@ var stack: [Int] = []
 func push(_ number: Int) {
     stack.append(number)
 }
-
+   
 func pop() -> Int {
     if stack.isEmpty {
         return -1
