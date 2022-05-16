@@ -29,7 +29,7 @@
 		BF4C9607282F85A7009B1149 /* 3020.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3020.swift; sourceTree = "<group>"; };
 		BF4C960A2830AED1009B1149 /* 10828.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 10828.swift; sourceTree = "<group>"; };
 		BF4C960C2830B701009B1149 /* 10773.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 10773.swift; sourceTree = "<group>"; };
-		BF4E28F12828FEC600F51133 /* BaekJoon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BaekJoon; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4E28F12828FEC600F51133 /* HyeminSeok */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HyeminSeok; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4E28F42828FEC600F51133 /* 2309.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2309.swift; sourceTree = "<group>"; };
 		BF4E28FB2829279B00F51133 /* 18111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 18111.swift; sourceTree = "<group>"; };
 		BF4E28FD2829407C00F51133 /* 1931.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1931.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		BF4E28F22828FEC600F51133 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF4E28F12828FEC600F51133 /* BaekJoon */,
+				BF4E28F12828FEC600F51133 /* HyeminSeok */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,9 +106,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF4E28F02828FEC600F51133 /* BaekJoon */ = {
+		BF4E28F02828FEC600F51133 /* HyeminSeok */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF4E28F82828FEC600F51133 /* Build configuration list for PBXNativeTarget "BaekJoon" */;
+			buildConfigurationList = BF4E28F82828FEC600F51133 /* Build configuration list for PBXNativeTarget "HyeminSeok" */;
 			buildPhases = (
 				BF4E28ED2828FEC600F51133 /* Sources */,
 				BF4E28EE2828FEC600F51133 /* Frameworks */,
@@ -118,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = BaekJoon;
+			name = HyeminSeok;
 			productName = BaekJoon;
-			productReference = BF4E28F12828FEC600F51133 /* BaekJoon */;
+			productReference = BF4E28F12828FEC600F51133 /* HyeminSeok */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +139,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF4E28EC2828FEC600F51133 /* Build configuration list for PBXProject "BaekJoon" */;
+			buildConfigurationList = BF4E28EC2828FEC600F51133 /* Build configuration list for PBXProject "HyeminSeok" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -152,7 +152,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF4E28F02828FEC600F51133 /* BaekJoon */,
+				BF4E28F02828FEC600F51133 /* HyeminSeok */,
 			);
 		};
 /* End PBXProject section */
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF4E28EC2828FEC600F51133 /* Build configuration list for PBXProject "BaekJoon" */ = {
+		BF4E28EC2828FEC600F51133 /* Build configuration list for PBXProject "HyeminSeok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4E28F62828FEC600F51133 /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF4E28F82828FEC600F51133 /* Build configuration list for PBXNativeTarget "BaekJoon" */ = {
+		BF4E28F82828FEC600F51133 /* Build configuration list for PBXNativeTarget "HyeminSeok" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4E28F92828FEC600F51133 /* Debug */,
