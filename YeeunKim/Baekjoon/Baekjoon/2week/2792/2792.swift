@@ -5,7 +5,6 @@ let nm = readLine()!.split(separator: " ").map{Int($0)!}
 var beads: [Int] = []
 var max = 0
 var min = 1
-var rst = 999999999
 
 for _ in 0..<nm[1] {
     let tmp = Int(readLine()!)!
