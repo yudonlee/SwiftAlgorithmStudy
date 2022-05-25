@@ -1,3 +1,10 @@
+//
+//  main.swift
+//  BaekJoon
+//
+//  Created by yudonlee on 2022/05/14.
+//
+
 import Foundation
 
 
@@ -62,68 +69,44 @@ final class FileIO {
 
 let FIO = FileIO()
 
+var K = FIO.readInt()
 var N = FIO.readInt()
-var arr: [Int]
+var arr: [Int] = Array(repeating: 0, count: 10001)
+var maxLength: Int = 0
 
-for _ in 0..<N{
-    arr.append(FIO.readInt())
-}
-
-var sorted = [Int](repeating: 0, count: N)
-var count: CLongLong = 0
-
-func mergeSort(left: Int, right: Int) {
-    if(left < right) {
-        var mid: Int = Int((left + right) / 2)
-        mergeSort(left: left, right: mid)
-        mergeSort(left: mid + 1, right: right)
-        merge(left: left, mid: mid, right: right)
-    }
-}
-
-func merge(left: Int, mid: Int, right: Int) {
-    var leftStartIndex: Int = left
-    var rightStartIndex: Int = mid + 1
-    var sortedIndex:Int = 0
-    while(leftStartIndex <= mid && rightStartIndex <= right) {
-        if(arr[leftStartIndex] > arr[rightStartIndex]) {
-//            sorted.append(arr[rightStartIndex])
-            sorted[sortedIndex] = arr[rightStartIndex]
-            count += Int64(mid - leftStartIndex + 1)
-            rightStartIndex += 1
-        } else {
-            sorted[sortedIndex] = arr[leftStartIndex]
-//            sorted.append(arr[leftStartIndex])
-            leftStartIndex += 1
-        }
-        sortedIndex += 1
-    }
-    
-    while(leftStartIndex <= mid) {
-//        sorted.append(arr[leftStartIndex])
-        sorted[sortedIndex] = arr[leftStartIndex]
-        leftStartIndex += 1
-        sortedIndex += 1
-//        count += 1
-    }
-    while(rightStartIndex <= right) {
-//        sorted.append(arr[rightStartIndex])
-        sorted[sortedIndex] = arr[rightStartIndex]
-        rightStartIndex += 1
-        sortedIndex += 1
-    }
-    
-    var leftCopy:Int = left
-    
-    for i in 0..<sortedIndex{
-        arr[leftCopy] = sorted[i]
-        leftCopy += 1
+for i in 0..<K {
+    arr[i] = FIO.readInt()
+    if(maxLength < arr[i]) {
+        maxLength = arr[i]
     }
     
 }
 
-mergeSort(left: 0, right: N - 1)
-//print(arr)
-print(count)
+var left: Int = 1
+var right: Int = maxLength
+
+
+func countCable(arr: [Int], lanLength: Int) -> Int{
+    var count: Int = 0
+    for items in arr {
+        count += Int(items / lanLength)
+    }
+    return count
+}
+
+while(left < right) {
+    let mid: Int = (left + right) / 2
+    if(countCable(arr: arr, lanLength: mid) < N) {
+        right = mid
+    } else {
+        left = mid + 1
+    }
+//    print(left, right)
+}
+
+if(countCable(arr: arr, lanLength: left) < N) {
+    left -= 1
+}
+print(left)
 
 

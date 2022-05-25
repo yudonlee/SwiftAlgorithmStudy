@@ -1,3 +1,10 @@
+//
+//  main.swift
+//  BaekJoon
+//
+//  Created by yudonlee on 2022/05/10.
+//
+
 import Foundation
 
 
@@ -63,7 +70,7 @@ final class FileIO {
 let FIO = FileIO()
 
 var N = FIO.readInt()
-var arr: [Int]
+var arr: [Int] = []
 
 for _ in 0..<N{
     arr.append(FIO.readInt())
