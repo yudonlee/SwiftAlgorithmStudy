@@ -60,70 +60,77 @@ final class FileIO {
     }
 }
 
+func lowerBound(arr: [Int], N: Int, compare: Int) -> Int {
+    var left: Int = 0
+    var right: Int = N
+    
+    while(left < right) {
+        let mid: Int = (left + right) / 2
+        if(arr[mid] >= compare) {
+            right = mid
+        } else {
+            left = mid + 1
+        }
+    }
+    return left
+}
+
+func upperBound(arr: [Int], N: Int, compare: Int) -> Int {
+    var left: Int = 0
+    var right: Int = N
+    
+    while(left < right) {
+        let mid: Int = (left + right) / 2
+        if(arr[mid] > compare) {
+            right = mid
+        } else {
+            left = mid  + 1
+        }
+    }
+    return left
+}
+
 let FIO = FileIO()
 
 var N = FIO.readInt()
-var arr: [Int]
+var H = FIO.readInt()
+let maxCount: Int = 1000000
+//var heightCount: [Int] = Array(repeating: 0, count: 500001)
+var minCount: [Int] = Array(repeating: 0, count: 500001)
 
-for _ in 0..<N{
-    arr.append(FIO.readInt())
-}
+var oddArray: [Int] = []
+var evenArray: [Int] = []
+var arr: [Int] = []
 
-var sorted = [Int](repeating: 0, count: N)
-var count: CLongLong = 0
-
-func mergeSort(left: Int, right: Int) {
-    if(left < right) {
-        var mid: Int = Int((left + right) / 2)
-        mergeSort(left: left, right: mid)
-        mergeSort(left: mid + 1, right: right)
-        merge(left: left, mid: mid, right: right)
+for i in 0..<N {
+    let input: Int = FIO.readInt()
+    if(i % 2 == 0) {
+        evenArray.append(input)
+    } else {
+        oddArray.append(input)
     }
 }
 
-func merge(left: Int, mid: Int, right: Int) {
-    var leftStartIndex: Int = left
-    var rightStartIndex: Int = mid + 1
-    var sortedIndex:Int = 0
-    while(leftStartIndex <= mid && rightStartIndex <= right) {
-        if(arr[leftStartIndex] > arr[rightStartIndex]) {
-//            sorted.append(arr[rightStartIndex])
-            sorted[sortedIndex] = arr[rightStartIndex]
-            count += Int64(mid - leftStartIndex + 1)
-            rightStartIndex += 1
-        } else {
-            sorted[sortedIndex] = arr[leftStartIndex]
-//            sorted.append(arr[leftStartIndex])
-            leftStartIndex += 1
-        }
-        sortedIndex += 1
-    }
+oddArray.sort()
+evenArray.sort()
+
+var minValue:Int = maxCount
+
+for i in 1...H {
+    let lower: Int = lowerBound(arr: evenArray, N: evenArray.count, compare: i)
+    let upper: Int = lowerBound(arr: oddArray, N: oddArray.count, compare: H - i + 1)
     
-    while(leftStartIndex <= mid) {
-//        sorted.append(arr[leftStartIndex])
-        sorted[sortedIndex] = arr[leftStartIndex]
-        leftStartIndex += 1
-        sortedIndex += 1
-//        count += 1
-    }
-    while(rightStartIndex <= right) {
-//        sorted.append(arr[rightStartIndex])
-        sorted[sortedIndex] = arr[rightStartIndex]
-        rightStartIndex += 1
-        sortedIndex += 1
-    }
     
-    var leftCopy:Int = left
+    let up: Int = evenArray.count - lower
+    let down: Int = oddArray.count - upper
     
-    for i in 0..<sortedIndex{
-        arr[leftCopy] = sorted[i]
-        leftCopy += 1
+    minCount[up + down] += 1
+    
+    if(minValue > up + down) {
+        minValue = up + down
     }
-    
 }
 
-mergeSort(left: 0, right: N - 1)
-//print(arr)
-print(count)
+print("\(minValue) \(minCount[minValue])")
 
 
