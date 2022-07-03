@@ -2,7 +2,7 @@
 //  main.swift
 //  BaekJoon
 //
-//  Created by yudonlee on 2022/07/01.
+//  Created by yudonlee on 2022/07/03.
 //
 
 import Foundation
@@ -65,69 +65,56 @@ final class FileIO {
     }
 }
 
-struct Edge {
-    var src: Int
-    var dest: Int
-    var weight: Int
-}
-
-
 let fio = FileIO()
-let testCase = fio.readInt()
-let INF = 987654321
+let N = fio.readInt()
+let M = fio.readInt()
+var parent = Array(repeating: 0, count: N + 1)
 
-for _ in 0..<testCase {
-    let V = fio.readInt()
-    let M = fio.readInt()
-    let W = fio.readInt()
-    
-    var isGraphCycle: Bool = false
-    var edges: [Edge] = []
-    
-    var startNode: Set<Int> = []
-    
-    for _ in 1...M {
-        let src = fio.readInt()
-        let dest = fio.readInt()
-        let weight = fio.readInt()
-        
-        edges.append(Edge(src: src, dest: dest, weight: weight))
-        edges.append(Edge(src: dest, dest: src, weight: weight))
-    }
-    
-    for _ in 1...W {
-        let src = fio.readInt()
-        let dest = fio.readInt()
-        let weight = fio.readInt()
-        
-        edges.append(Edge(src: src, dest: dest, weight: weight * -1))
-        startNode.insert(src)
-        startNode.insert(dest)
-    }
-    
-    
-    for start in startNode {
-        if isGraphCycle {
-            break
-        }
-        var dist: [Int] = Array(repeating: INF, count: V + 1)
-        dist[start] = 0
-        
-        for count in 0...V {
-            for edge in edges {
-                if dist[edge.src] == INF {
-                    continue
-                } else if dist[edge.dest] > dist[edge.src] + edge.weight {
-                    if count == V {
-                        isGraphCycle = true
-                        break
-                    }
-                    dist[edge.dest] = dist[edge.src] + edge.weight
-                }
-            }
-        }
-    }
-    print(isGraphCycle ? "YES" : "NO")
-    
+for i in 0...N {
+    parent[i] = i
 }
+
+func find(node: Int) -> Int {
+    if parent[node] != node {
+        parent[node] = find(node: parent[node])
+        return parent[node]
+    }
+    return node
+}
+
+// union시 rootNode return
+func union(left: Int, right: Int) -> Int {
+    let lParent = find(node: left)
+    let rParent = find(node: right)
     
+    if lParent < rParent {
+        parent[lParent] = rParent
+        return rParent
+    }
+    
+    parent[rParent] = lParent
+    return lParent
+}
+
+for _ in 0..<M {
+    let src = fio.readInt()
+    let dest = fio.readInt()
+    let r = union(left: src, right: dest)
+}
+
+// 전체 rootNode 갱신
+var index: Int = 1
+var count: Int = 0
+while(index <= N) {
+    var currentParent = find(node: index)
+    while(index < currentParent) {
+        currentParent = union(left: currentParent, right: index)
+        index += 1
+    }
+    
+    if index == parent[index] {
+        count += 1
+    }
+    index += 1
+}
+print(count)
