@@ -1,5 +1,5 @@
 //
-//  1717.swift 집합의 표현 (Disjoint set)
+//  1976.swift 여행가자 disjoint set
 //  BaekJoon
 //
 //  Created by 김원희 on 2022/07/05.
@@ -59,27 +59,33 @@ final class FileIO {
 }
 
 let FIO = FileIO()
-
-let n = FIO.readInt()
-let m = FIO.readInt()
+let N = FIO.readInt() //도시의 수 1...N
+let M = FIO.readInt() //여행 계획 도시 (FIND 반복 수)
 
 var parent = [Int]()
-for i in 0...n {
-    parent.append(i)
+for i in 0...N {
+    parent.append(i) //각 노드의 부모 노드를 본인으로 초기화
 }
 
-for _ in 0..<m {
-    let flag = FIO.readInt()
-    let a = FIO.readInt()
-    let b = FIO.readInt()
-    
-    if flag == 0 { //UNION
-        UNION(a: a, b: b)
-    } else { //flag == 1 -> FIND
-        FIND(node: a) == FIND(node: b) ? print("YES") : print("NO")
+for i in 1...N {
+    for j in 1...N {
+        let link = FIO.readInt()
+        if link == 1 {
+            UNION(a: i, b: j)
+        }
     }
-    
 }
+
+var flag = true
+var root = FIND(node: FIO.readInt())
+for _ in 1..<M {
+    if root != FIND(node: FIO.readInt()) {
+        flag = false
+        break
+    }
+}
+flag == true ? print("YES") : print("NO")
+
 
 func FIND(node: Int) -> Int {
     if node == parent[node] {
@@ -87,15 +93,14 @@ func FIND(node: Int) -> Int {
     }
     
     parent[node] = FIND(node: parent[node])
-    
     return parent[node]
 }
 
 func UNION(a: Int, b: Int) {
-    let a = FIND(node: a)
-    let b = FIND(node: b)
+    //각 노드의 루트 노드 찾기
+    let root_a = FIND(node: a)
+    let root_b = FIND(node: b)
     
-    parent[b] = a
+    parent[root_b] = root_a //루트 노드를 같게 해줌 -> 같은 트리
 }
-
 
