@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  main.swift
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/05/11.
 //
 
 import Foundation
@@ -59,50 +59,33 @@ final class FileIO {
 }
 
 let FIO = FileIO()
+var N = FIO.readInt() //상근이 보유한 숫자카드 개수
+var ownCards = [Int]()
 
-let N = FIO.readInt() //지시 횟수
-
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
-
-for i in 1..<1000001 {
-    parent[i] = i
+for _ in 0..<N { //상근이 보유한 숫자카드
+    ownCards.append(FIO.readInt())
 }
 
-for _ in 0..<N {
-    let flag = FIO.readString()
-    
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
-        
-        UNION(a: a, b: b)
-    }
-    
-    if flag == "Q" {
-        let c = FIO.readInt()
-        
-        print(cnt[FIND(node: c)])
-    }
+var M = FIO.readInt() //주어진 숫자카드 개수
+var cards = [Int]()
+
+for _ in 0..<M { //주어진 숫자카드
+    cards.append(FIO.readInt())
 }
 
-func FIND(node: Int) -> Int {
-    if node == parent[node] {
-        return node
-    }
+func lowerBound() -> Int{
     
-    parent[node] = FIND(node: parent[node])
-    
-    return parent[node]
 }
 
-func UNION(a: Int, b: Int) {
-    let root_a = FIND(node: a)
-    let root_b = FIND(node: b)
 
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
-        parent[root_a] = root_b
-    }
-}
+
+
+
+
+
+
+
+
+
+
+

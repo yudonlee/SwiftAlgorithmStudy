@@ -78,8 +78,8 @@ for _ in 0..<M {
     let first = FIO.readInt()
     let second = FIO.readInt()
     
-    arr[first][second] = 1;
-    arr[second][first] = 1;
+    arr[first][second] = 1
+    arr[second][first] = 1
 }
 
 //dfs_recursion(edge: V)

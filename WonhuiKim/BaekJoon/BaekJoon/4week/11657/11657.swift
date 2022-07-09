@@ -82,25 +82,17 @@ for _ in 0..<M {
 if bellmanFord(start: 1) {
     print(-1)
 } else {
-    for i in 1...N {
-        if i != 1 {
-            if dist[i] == maxDist {
-                print(-1)
-            } else {
-                print(dist[i])
-            }
-        }
+    for i in 2...N {
+        dist[i] == maxDist ? print(-1) : print(dist[i])
     }
 }
-//
+
 func bellmanFord(start: Int) -> Bool {
 
     dist[start] = 0
 
     for i in 0..<N {
-        for j in 0..<M {
-            let edge = edges[j]
-
+        for edge in edges {
             if dist[edge.src] != maxDist {
                 if dist[edge.dest] > (dist[edge.src] + edge.weight) {
                     dist[edge.dest] = dist[edge.src] + edge.weight
