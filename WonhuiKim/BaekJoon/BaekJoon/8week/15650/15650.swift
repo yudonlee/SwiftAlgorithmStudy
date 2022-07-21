@@ -1,8 +1,8 @@
 //
-//  15649.swift N과M(1) backtracking
+//  15650.swift n과m(2) backtracking
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/19.
+//  Created by 김원희 on 2022/07/21.
 //
 
 import Foundation
@@ -60,24 +60,27 @@ final class FileIO {
 
 let FIO = FileIO()
 let N = FIO.readInt() //1~N
-let M = FIO.readInt() //선택해야할 개수
+let M = FIO.readInt() //고를 수 M개
 
-var answer: [Int] = Array(repeating: 0, count: M)
 var visit: [Bool] = Array(repeating: false, count: N+1)
+var answer: [Int] = Array(repeating: 0, count: M)
 
-bt(depth: 0)
+bt(depth: 0, cur: 1)
 
-func bt(depth: Int) {
+func bt(depth: Int, cur: Int) {
     if depth == M {
-        print(answer)
+        for ans in answer {
+            print(ans, terminator: " ")
+        }
+        print()
         return
     }
     
-    for i in 1...N {
+    for i in cur...N {
         if !visit[i] {
             visit[i] = true
             answer[depth] = i
-            bt(depth: depth+1)
+            bt(depth: depth+1, cur: i)
             visit[i] = false
         }
     }
