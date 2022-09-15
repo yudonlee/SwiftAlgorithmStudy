@@ -38,7 +38,6 @@ func bfs(x: Int, y: Int) {
     while(!queue.isEmpty) {
         let temp = queue.removeFirst()
 
-        
         for i in 0..<4 {
             let nextX = temp.0 + dx[i]
             let nextY = temp.1 + dy[i]

@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  1045.swift 도로 (MST)
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/07/11.
 //
 
 import Foundation
@@ -59,32 +59,82 @@ final class FileIO {
 }
 
 let FIO = FileIO()
+let N = FIO.readInt() //도시(정점) 수
+var M = FIO.readInt() //도로(간선) 수
 
-let N = FIO.readInt() //지시 횟수
-
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
-
-for i in 1..<1000001 {
+var parent: [Int] = Array(repeating: 0, count: N)
+for i in 1..<N {
     parent[i] = i
 }
 
-for _ in 0..<N {
-    let flag = FIO.readString()
-    
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
-        
-        UNION(a: a, b: b)
-    }
-    
-    if flag == "Q" {
-        let c = FIO.readInt()
-        
-        print(cnt[FIND(node: c)])
+var pq = [(Int, Int)]()
+
+var cities: [[String]] = Array(repeating: Array(repeating: " ", count: N), count: N)
+for i in 0..<N {
+    let str = FIO.readString().map { String($0) } //map과 { 사이 띄어쓰기!!
+    for j in i+1..<N {
+        cities[i][j] = str[j]
+        if cities[i][j] == "Y" {
+            pq.append((i, j))
+        }
     }
 }
+
+var linked: [Int] = Array(repeating: 0, count: N)
+var cntEdge = 0
+var left = [(Int, Int)]()
+for now in pq {
+    if FIND(node: now.0) != FIND(node: now.1) {
+        UNION(a: now.0, b: now.1)
+        linked[now.0] += 1
+        linked[now.1] += 1
+        cntEdge += 1
+    } else {
+        left.append((now.0, now.1))
+    }
+}
+
+var snap = false
+if N-1 != cntEdge { //MST 아닌 경우
+    snap = true
+}
+
+var additional = M - (N-1)
+for now in left {
+    if additional == 0 {
+        //snap = true
+        break
+    }
+    if additional < 0 {
+        snap = true
+        break
+    }
+    linked[now.0] += 1
+    linked[now.1] += 1
+    additional -= 1
+}
+
+if additional > 0 {
+    snap = true
+}
+
+let std = FIND(node: 0)
+for i in 1..<N {
+    if std != FIND(node: i) {
+        snap = true
+        break
+    }
+}
+
+if snap {
+    print(-1)
+} else {
+    for l in linked {
+        print(l, terminator: " ")
+    }
+}
+
+
 
 func FIND(node: Int) -> Int {
     if node == parent[node] {
@@ -92,17 +142,17 @@ func FIND(node: Int) -> Int {
     }
     
     parent[node] = FIND(node: parent[node])
-    
     return parent[node]
 }
 
 func UNION(a: Int, b: Int) {
     let root_a = FIND(node: a)
     let root_b = FIND(node: b)
-
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
+    
+    if root_a < root_b {
+        parent[root_b] = root_a
+    } else {
         parent[root_a] = root_b
     }
 }
+

@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  9084.swift 동전 knapsack
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/07/17.
 //
 
 import Foundation
@@ -60,49 +60,27 @@ final class FileIO {
 
 let FIO = FileIO()
 
-let N = FIO.readInt() //지시 횟수
+let T = FIO.readInt() //테스트케이스 수
 
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
-
-for i in 1..<1000001 {
-    parent[i] = i
-}
-
-for _ in 0..<N {
-    let flag = FIO.readString()
+for _ in 0..<T {
+    let N = FIO.readInt() //동전 가지수
     
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
-        
-        UNION(a: a, b: b)
+    var coin = [Int]()
+    for _ in 0..<N {
+        coin.append(FIO.readInt()) //coin 1 ~ N 저장
     }
     
-    if flag == "Q" {
-        let c = FIO.readInt()
-        
-        print(cnt[FIND(node: c)])
-    }
-}
-
-func FIND(node: Int) -> Int {
-    if node == parent[node] {
-        return node
-    }
+    let M = FIO.readInt() //만들어야 할 금액
+    var DP: [Int] = Array(repeating: 0, count: M+1)
     
-    parent[node] = FIND(node: parent[node])
-    
-    return parent[node]
-}
-
-func UNION(a: Int, b: Int) {
-    let root_a = FIND(node: a)
-    let root_b = FIND(node: b)
-
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
-        parent[root_a] = root_b
+    DP[0] = 1
+    for i in 0..<N {
+        if coin[i] < M {
+            for j in coin[i]...M {
+                DP[j] += DP[j-coin[i]]
+            }
+        }
     }
+    print(DP[M])
 }
+

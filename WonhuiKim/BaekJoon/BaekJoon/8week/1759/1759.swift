@@ -1,8 +1,8 @@
 //
-//  11657.swift 타임머신 (Bellman-Ford)
+//  1759.swift 암호 만들기 (back tracking)
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/03.
+//  Created by 김원희 on 2022/07/19.
 //
 
 import Foundation
@@ -59,57 +59,59 @@ final class FileIO {
 }
 
 let FIO = FileIO()
+let L = FIO.readInt() //조합해야 하는 알파벳 수 (depth)
+let C = FIO.readInt() //주어지는 알파벳 수
 
-let N = FIO.readInt() //도시(정점) 개수
-let M = FIO.readInt() //노선(간선) 개수
-
-let maxValue = 10001
-//var edges: [[Int]] = Array(repeating: Array(repeating: maxValue, count: N+1), count: N+1)
-let maxDist = maxValue*(N-1)
-var dist: [Int] = Array(repeating: maxDist, count: N+1)
-
-
-var edges = [Edge]()
-
-for _ in 0..<M {
-    let A = FIO.readInt()
-    let B = FIO.readInt()
-    let C = FIO.readInt()
-    
-    edges.append(Edge(src: A, dest: B, weight: C))
+var alphabet = [String]()
+for _ in 0..<C {
+    alphabet.append(FIO.readString())
 }
 
-if bellmanFord(start: 1) {
-    print(-1)
-} else {
-    for i in 2...N {
-        dist[i] == maxDist ? print(-1) : print(dist[i])
-    }
-}
+var visit: [Bool] = Array(repeating: false, count: C)
+var answer: [Int] = Array(repeating: 0, count: L)
 
-func bellmanFord(start: Int) -> Bool {
+alphabet.sort() //정렬 - 알파벳이 암호에서 증가하는 순서로 배열되었을 것
+bt(depth: 0, cur: 0)
 
-    dist[start] = 0
-
-    for i in 0..<N {
-        for edge in edges {
-            if dist[edge.src] != maxDist {
-                if dist[edge.dest] > (dist[edge.src] + edge.weight) {
-                    dist[edge.dest] = dist[edge.src] + edge.weight
-
-                    if i == N-1 { //N-1번째에도 값이 갱신되면 음수 순환 사이클이므로 true 반환
-                        return true
-                    }
-                }
+func bt(depth: Int, cur: Int) {
+    if depth == L {
+        if checkCondition() {
+            for i in answer {
+                print(alphabet[i], terminator: "")
             }
+            print()
+        }
+        return
+    }
+    
+    for i in cur..<C {
+        if !visit[i] {
+            visit[i] = true
+            answer[depth] = i
+            bt(depth: depth+1, cur: i)
+            visit[i] = false
         }
     }
-
-    return false
 }
 
-struct Edge {
-    var src: Int
-    var dest: Int
-    var weight: Int
+func checkCondition() -> Bool { //조건- 최소 한 개의 모음(a, e, i, o, u)과 최소 두 개의 자음으로 구성
+    var vowel = 0 //모음 개수
+    var consonant = 0 //자음 개수
+    
+    for i in answer {
+        if alphabet[i] == "a" || alphabet[i] == "e" || alphabet[i] == "i"
+            || alphabet[i] == "o" || alphabet[i] == "u" {
+            vowel += 1
+        } else {
+            consonant += 1
+        }
+    }
+    
+    if vowel >= 1 && consonant >= 2 {
+        return true
+    } else {
+        return false
+    }
 }
+
+

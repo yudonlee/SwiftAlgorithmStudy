@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  15650.swift n과m(2) backtracking
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/07/21.
 //
 
 import Foundation
@@ -59,50 +59,29 @@ final class FileIO {
 }
 
 let FIO = FileIO()
+let N = FIO.readInt() //1~N
+let M = FIO.readInt() //고를 수 M개
 
-let N = FIO.readInt() //지시 횟수
+var visit: [Bool] = Array(repeating: false, count: N+1)
+var answer: [Int] = Array(repeating: 0, count: M)
 
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
+bt(depth: 0, cur: 1)
 
-for i in 1..<1000001 {
-    parent[i] = i
-}
-
-for _ in 0..<N {
-    let flag = FIO.readString()
-    
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
-        
-        UNION(a: a, b: b)
+func bt(depth: Int, cur: Int) {
+    if depth == M {
+        for ans in answer {
+            print(ans, terminator: " ")
+        }
+        print()
+        return
     }
     
-    if flag == "Q" {
-        let c = FIO.readInt()
-        
-        print(cnt[FIND(node: c)])
-    }
-}
-
-func FIND(node: Int) -> Int {
-    if node == parent[node] {
-        return node
-    }
-    
-    parent[node] = FIND(node: parent[node])
-    
-    return parent[node]
-}
-
-func UNION(a: Int, b: Int) {
-    let root_a = FIND(node: a)
-    let root_b = FIND(node: b)
-
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
-        parent[root_a] = root_b
+    for i in cur...N {
+        if !visit[i] {
+            visit[i] = true
+            answer[depth] = i
+            bt(depth: depth+1, cur: i)
+            visit[i] = false
+        }
     }
 }

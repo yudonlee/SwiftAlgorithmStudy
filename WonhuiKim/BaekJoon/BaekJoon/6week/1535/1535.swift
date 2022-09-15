@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  1535.swift 안녕 (Knapsack)
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/07/12.
 //
 
 import Foundation
@@ -59,50 +59,36 @@ final class FileIO {
 }
 
 let FIO = FileIO()
+let N = FIO.readInt() //사람 수 3
+let fullEngergy = 100 //체력 100
 
-let N = FIO.readInt() //지시 횟수
+var energy: [Int] = Array(repeating: 0, count: N+1) //체력
+var joy: [Int] = Array(repeating: 0, count: N+1) //기쁨
 
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
-
-for i in 1..<1000001 {
-    parent[i] = i
+for i in 1...N {
+    energy[i] = FIO.readInt() //체력
+}
+for i in 1...N {
+    joy[i] = FIO.readInt() //기쁨
 }
 
-for _ in 0..<N {
-    let flag = FIO.readString()
-    
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
-        
-        UNION(a: a, b: b)
-    }
-    
-    if flag == "Q" {
-        let c = FIO.readInt()
-        
-        print(cnt[FIND(node: c)])
+var DP: [[Int]] = Array(repeating: Array(repeating: 0, count: fullEngergy), count: N+1)
+for i in 1...N {
+    for j in 1..<fullEngergy {
+        if energy[i] <= j {
+            if (DP[i-1][j-energy[i]]+joy[i]) > DP[i-1][j] {
+                DP[i][j] = DP[i-1][j-energy[i]]+joy[i]
+            } else {
+                DP[i][j] = DP[i-1][j]
+            }
+        } else {
+            DP[i][j] = DP[i-1][j]
+        }
     }
 }
 
-func FIND(node: Int) -> Int {
-    if node == parent[node] {
-        return node
-    }
-    
-    parent[node] = FIND(node: parent[node])
-    
-    return parent[node]
-}
+print(DP[N][fullEngergy-1])
 
-func UNION(a: Int, b: Int) {
-    let root_a = FIND(node: a)
-    let root_b = FIND(node: b)
 
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
-        parent[root_a] = root_b
-    }
-}
+
+

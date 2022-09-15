@@ -1,8 +1,8 @@
 //
-//  18116.swift 로봇 조립 disjoint set
+//  4781.swift 사탕 가게 Knapsack
 //  BaekJoon
 //
-//  Created by 김원희 on 2022/07/06.
+//  Created by 김원희 on 2022/07/14.
 //
 
 import Foundation
@@ -60,49 +60,50 @@ final class FileIO {
 
 let FIO = FileIO()
 
-let N = FIO.readInt() //지시 횟수
-
-var parent: [Int] = Array(repeating: 0, count: 1000001)
-var cnt: [Int] = Array(repeating: 1, count: 1000001)
-
-for i in 1..<1000001 {
-    parent[i] = i
-}
-
-for _ in 0..<N {
-    let flag = FIO.readString()
+while (true) {
+    let n = FIO.readInt() //사탕 종류의 수 (보석 번호)
+    let m = Int((FIO.readString() as NSString).floatValue * 100 + 0.5)
     
-    if flag == "I" {
-        let a = FIO.readInt()
-        let b = FIO.readInt()
+    if n == 0 && m == 0 {
+        break
+    }
+    
+    var calories = [Int]()
+    var price = [Int]()
+    
+    var minPrice = 10000
+    var c: Int
+    var p: Int
+    for i in 0...n {
+        if i == 0 {
+            c = 0
+            p = 0
+        } else {
+            c = FIO.readInt()
+            p = Int((FIO.readString() as NSString).floatValue * 100)
+        }
+        calories.append(c) //칼로리 (가치, 최대로 만들어야 하는 것)
+        price.append(p)//가격 (돈의 양 내에서 해결해야 하는 것)
         
-        UNION(a: a, b: b)
+        if p < minPrice {
+            minPrice = p
+        }
     }
     
-    if flag == "Q" {
-        let c = FIO.readInt()
+    var DP: [Int] = Array(repeating: 0, count: m+1)
+    for i in minPrice...m { //가격
+        for j in 0...n { //사탕 종류
+            if price[j] <= i {
+                if (DP[i-price[j]]+calories[j]) > DP[i] {
+                    DP[i] = (DP[i-price[j]]+calories[j])
+                } else {
+                    DP[i] = DP[i]
+                }
+            }
+            
+        }
         
-        print(cnt[FIND(node: c)])
-    }
-}
-
-func FIND(node: Int) -> Int {
-    if node == parent[node] {
-        return node
     }
     
-    parent[node] = FIND(node: parent[node])
-    
-    return parent[node]
-}
-
-func UNION(a: Int, b: Int) {
-    let root_a = FIND(node: a)
-    let root_b = FIND(node: b)
-
-    if root_a != root_b {
-        cnt[root_b] += cnt[root_a]
-        cnt[root_a] = 0
-        parent[root_a] = root_b
-    }
+    print(DP[m])
 }
