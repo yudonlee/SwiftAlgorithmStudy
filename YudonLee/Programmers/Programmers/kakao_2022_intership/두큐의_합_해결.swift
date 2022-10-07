@@ -46,7 +46,6 @@ func solution(_ queue1:[Int], _ queue2:[Int]) -> Int {
     rightQueue.arr = queue2.map({ Int64($0) })
     rightQueue.rear = queue2.count - 1
     
-    
     var leftArr: [Int64] = queue1.map({ Int64($0) })
     var rightArr: [Int64] = queue2.map({ Int64($0) })
     var leftSum: Int64 = Int64(leftArr.reduce(0){$0 + $1})

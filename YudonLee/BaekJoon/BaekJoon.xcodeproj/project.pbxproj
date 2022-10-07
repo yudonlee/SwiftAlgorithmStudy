@@ -684,6 +684,8 @@
 			dependencies = (
 			);
 			name = BaekJoon;
+			packageProductDependencies = (
+			);
 			productName = BaekJoon;
 			productReference = 766F5DF82826390100B936E5 /* BaekJoon */;
 			productType = "com.apple.product-type.tool";
@@ -713,6 +715,8 @@
 				Base,
 			);
 			mainGroup = 766F5DEF2826390100B936E5;
+			packageReferences = (
+			);
 			productRefGroup = 766F5DF92826390100B936E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -9,7 +9,7 @@ import Foundation
 
 func solution(_ s:String) -> Int {
     let words: [String] = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-    var result = s
+    var result = se
     for (idx, checkWord) in words.enumerated() {
         result = result.replacingOccurrences(of: checkWord, with: String(idx))
     }
