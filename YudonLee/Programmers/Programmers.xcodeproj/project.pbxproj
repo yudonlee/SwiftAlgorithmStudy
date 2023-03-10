@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		766DD54828F03D55001BE782 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766DD54728F03D55001BE782 /* main.swift */; };
 		76D184D328D20368006306D7 /* K_진수_변환기.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E97F3828D1F1380018D50C /* K_진수_변환기.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,8 @@
 		766DD54028F0311C001BE782 /* 베스트앨범_고차_응용.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "베스트앨범_고차_응용.swift"; sourceTree = "<group>"; };
 		766DD54328F03784001BE782 /* 올바른괄호.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "올바른괄호.swift"; sourceTree = "<group>"; };
 		766DD54528F03A19001BE782 /* 기능개발.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "기능개발.swift"; sourceTree = "<group>"; };
-		766DD54728F03D55001BE782 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		769B5DDB29B975CB0027FC28 /* 조이스틱.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "조이스틱.swift"; sourceTree = "<group>"; };
+		769B5DFF29BA23170027FC28 /* 큰수만들기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "큰수만들기.swift"; sourceTree = "<group>"; };
 		76AA769C28D6E317006FFCA2 /* 숫자문자열_영단어.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "숫자문자열_영단어.swift"; sourceTree = "<group>"; };
 		76AA769E28D6E603006FFCA2 /* 숫자문자열_영단어_개선.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "숫자문자열_영단어_개선.swift"; sourceTree = "<group>"; };
 		76AA76A028D6E9AF006FFCA2 /* 거리두기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "거리두기.swift"; sourceTree = "<group>"; };
@@ -79,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76212CE229B0B87A001AEEBF /* Greedy */ = {
+			isa = PBXGroup;
+			children = (
+				769B5DDB29B975CB0027FC28 /* 조이스틱.swift */,
+				769B5DFF29BA23170027FC28 /* 큰수만들기.swift */,
+			);
+			path = Greedy;
+			sourceTree = "<group>";
+		};
 		766DD4BD28DEBD49001BE782 /* kakao_2022_blind_recurit_하반기 */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +124,6 @@
 			children = (
 				766DD54328F03784001BE782 /* 올바른괄호.swift */,
 				766DD54528F03A19001BE782 /* 기능개발.swift */,
-				766DD54728F03D55001BE782 /* main.swift */,
 			);
 			name = "스택_큐";
 			path = "큐";
@@ -130,6 +138,13 @@
 				76AA76C928DEB86B006FFCA2 /* Stack.swift */,
 			);
 			path = Reference;
+			sourceTree = "<group>";
+		};
+		769B5E0129BB0E340027FC28 /* DynamicProgramming */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DynamicProgramming;
 			sourceTree = "<group>";
 		};
 		76AA769B28D6E220006FFCA2 /* kakao_2021_internship */ = {
@@ -191,6 +206,8 @@
 		76E97F3728D1F1380018D50C /* Programmers */ = {
 			isa = PBXGroup;
 			children = (
+				769B5E0129BB0E340027FC28 /* DynamicProgramming */,
+				76212CE229B0B87A001AEEBF /* Greedy */,
 				766DD54228F0377F001BE782 /* 스택_큐 */,
 				766DD53428EE9726001BE782 /* 해시 */,
 				766DD53128EDC86A001BE782 /* 정렬 */,
@@ -249,7 +266,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					76E97F3428D1F1380018D50C = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -282,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				766DD54828F03D55001BE782 /* main.swift in Sources */,
 				76D184D328D20368006306D7 /* K_진수_변환기.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +339,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -383,6 +400,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -407,7 +425,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2RG6A633V9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,7 +445,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2RG6A633V9;
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
