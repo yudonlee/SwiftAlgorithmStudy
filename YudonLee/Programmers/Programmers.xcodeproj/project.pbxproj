@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		769B5E0C29BD96330027FC28 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B5E0B29BD96330027FC28 /* main.swift */; };
 		76D184D328D20368006306D7 /* K_진수_변환기.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E97F3828D1F1380018D50C /* K_진수_변환기.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,9 @@
 		766DD54528F03A19001BE782 /* 기능개발.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "기능개발.swift"; sourceTree = "<group>"; };
 		769B5DDB29B975CB0027FC28 /* 조이스틱.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "조이스틱.swift"; sourceTree = "<group>"; };
 		769B5DFF29BA23170027FC28 /* 큰수만들기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "큰수만들기.swift"; sourceTree = "<group>"; };
+		769B5E0629BB0F5C0027FC28 /* N으로표현.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "N으로표현.swift"; sourceTree = "<group>"; };
+		769B5E0929BD936B0027FC28 /* 타겟넘버.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "타겟넘버.swift"; sourceTree = "<group>"; };
+		769B5E0B29BD96330027FC28 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76AA769C28D6E317006FFCA2 /* 숫자문자열_영단어.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "숫자문자열_영단어.swift"; sourceTree = "<group>"; };
 		76AA769E28D6E603006FFCA2 /* 숫자문자열_영단어_개선.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "숫자문자열_영단어_개선.swift"; sourceTree = "<group>"; };
 		76AA76A028D6E9AF006FFCA2 /* 거리두기.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "거리두기.swift"; sourceTree = "<group>"; };
@@ -143,8 +147,18 @@
 		769B5E0129BB0E340027FC28 /* DynamicProgramming */ = {
 			isa = PBXGroup;
 			children = (
+				769B5E0629BB0F5C0027FC28 /* N으로표현.swift */,
 			);
 			path = DynamicProgramming;
+			sourceTree = "<group>";
+		};
+		769B5E0829BD93660027FC28 /* DFS */ = {
+			isa = PBXGroup;
+			children = (
+				769B5E0929BD936B0027FC28 /* 타겟넘버.swift */,
+				769B5E0B29BD96330027FC28 /* main.swift */,
+			);
+			path = DFS;
 			sourceTree = "<group>";
 		};
 		76AA769B28D6E220006FFCA2 /* kakao_2021_internship */ = {
@@ -206,6 +220,7 @@
 		76E97F3728D1F1380018D50C /* Programmers */ = {
 			isa = PBXGroup;
 			children = (
+				769B5E0829BD93660027FC28 /* DFS */,
 				769B5E0129BB0E340027FC28 /* DynamicProgramming */,
 				76212CE229B0B87A001AEEBF /* Greedy */,
 				766DD54228F0377F001BE782 /* 스택_큐 */,
@@ -299,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769B5E0C29BD96330027FC28 /* main.swift in Sources */,
 				76D184D328D20368006306D7 /* K_진수_변환기.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
